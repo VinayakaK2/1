@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Hospital Dashboard - HealthQR{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="logo text-white"><i class="fas fa-hospital"></i> Hospital Dashboard</h1>
+    <p class="text-white">Generate Life-Saving QR Codes</p>
+    <a href="/logout" class="btn btn-outline-light">Logout</a>
+</div>
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="glass p-5 card-hover">
+            <h3 class="text-white mb-4"><i class="fas fa-user-plus"></i> Register New Patient</h3>
+            <form method="POST">
+                <div class="row g-3">
+                    <div class="col-md-6"><input type="text" name="name" class="form-control" placeholder="Patient Full Name" required></div>
+                    <div class="col-md-6"><input type="text" name="blood_group" class="form-control" placeholder="Blood Group (e.g. O+)" required></div>
+                    <div class="col-md-6">
+                        <select name="has_cancer" class="form-select" required>
+                            <option value="">Has Cancer?</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select name="has_diabetes" class="form-select" required>
+                            <option value="">Has Diabetes?</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <textarea name="other_info" class="form-control" rows="3" placeholder="Other Medical Info (Allergies, Conditions, etc.)"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-gradient btn-lg w-100">
+                            <i class="fas fa-qrcode"></i> Generate QR Code & Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="glass p-4 card-hover">
+            <h4 class="text-white"><i class="fas fa-users"></i> Recent Patients</h4>
+            <div style="max-height: 500px; overflow-y: auto;">
+                {% for p in patients %}
+                <div class="bg-white bg-opacity-10 p-3 rounded mb-3 text-white">
+                    <strong>{{ p[1] }}</strong> • {{ p[2] }}<br>
+                    <small>Cancer: {{ p[3] }} | Diabetes: {{ p[4] }}</small>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

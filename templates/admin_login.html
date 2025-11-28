@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Admin Login - HealthQR{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="text-center mb-5">
+            <h1 class="logo"><i class="fas fa-qrcode text-success"></i> HealthQR</h1>
+            <p class="text-white fs-4">Admin Portal</p>
+        </div>
+
+        <div class="glass p-5 card-hover">
+            <h3 class="text-white text-center mb-4">Welcome Back, Admin</h3>
+            <form method="POST">
+                <div class="mb-4">
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent text-white border-0"><i class="fas fa-user"></i></span>
+                        <input type="text" name="username" class="form-control bg-transparent text-white border-0 border-bottom border-white" placeholder="Username" required>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent text-white border-0"><i class="fas fa-lock"></i></span>
+                        <input type="password" name="password" class="form-control bg-transparent text-white border-0 border-bottom border-white" placeholder="Password" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-gradient w-100">Login as Admin</button>
+            </form>
+            <div class="text-center mt-4">
+                <a href="/hospital_login" class="text-white text-decoration-none">Login as Hospital →</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel - HealthQR{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="logo text-white"><i class="fas fa-user-shield"></i> Admin Panel</h1>
+    <p class="text-white">Create & Manage Hospital Accounts</p>
+    <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="glass p-4 card-hover">
+            <h4 class="text-white mb-4"><i class="fas fa-plus-circle"></i> Add New Hospital</h4>
+            <form method="POST">
+                <div class="row g-3">
+                    <div class="col-12"><input type="text" name="name" class="form-control" placeholder="Hospital Name" required></div>
+                    <div class="col-12"><input type="text" name="username" class="form-control" placeholder="Username" required></div>
+                    <div class="col-12"><input type="email" name="email" class="form-control" placeholder="Email" required></div>
+                    <div class="col-12"><input type="password" name="password" class="form-control" placeholder="Password" required></div>
+                    <div class="col-12"><button class="btn btn-gradient w-100">Create Hospital Account</button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass p-4 card-hover">
+            <h4 class="text-white mb-4"><i class="fas fa-hospital"></i> Registered Hospitals</h4>
+            <div style="max-height: 400px; overflow-y: auto;">
+                {% for hospital in hospitals %}
+                <div class="bg-white bg-opacity-10 p-3 rounded mb-3 text-white">
+                    <strong>{{ hospital[1] }}</strong><br>
+                    <small>@{{ hospital[2] }} • {{ hospital[3] }}</small>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
